@@ -9,6 +9,13 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'lanka.likhith.15@gmail.com'
+EMAIL_HOST_PASSWORD = 'likhithlanka123'
+
 
 import os
 
@@ -120,3 +127,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+CELERY_BROKER_URL = 'redis://h:pfca188885a4ab8d9de0f30936aa30ef50ba7f47a54fe8d8b6ff65952e22f01f9@ec2-34-230-250-188.compute-1.amazonaws.com:10349'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+
+
