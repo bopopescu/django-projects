@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 
 @shared_task
 def sendmail():
-    time.sleep(10)
+    time.sleep(20)
     send_mail(
         subject='Thats your subject',
         message='That’s your message body',

@@ -7,8 +7,9 @@ from django.urls import reverse_lazy
 from .models import Post
 from .tasks import sendmail
 from django.core.mail import send_mail
-from celery import shared_task
 
+
+# from celery import shared_task
 
 
 class ManagerListView(ListView):
