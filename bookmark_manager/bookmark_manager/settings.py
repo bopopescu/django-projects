@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import urllib
+from kombu.utils.url import safequote
 
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -128,15 +129,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+BROKER_TRANSPORT_OPTIONS = {'region': 'ap-south-1'}
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-AWS_ACCESS_KEY_ID = 'AKIAVAKI6WHSBX5QD7HM:PkZMoTZkPJ'
-AWS_SECRET_ACCESS_KEY = '9egId/x/r8xY3u39oFMYpC0m7rl/d'
+#enter your aws access key id and secret access key and make sure that there are no special keys in secret key
+AWS_ACCESS_KEY_ID = safequote('Wrong access key')
+AWS_SECRET_ACCESS_KEY = safequote('T0XfnKcTRPvzHr6e78RAYFDYmV10mqVWAQz6DacP')
 BROKER_URL = 'sqs://{0}:{1}@'.format(
-    urllib.parse.quote(AWS_ACCESS_KEY_ID, safe=''),
-    urllib.parse.quote(AWS_SECRET_ACCESS_KEY, safe='')
+    urllib.parse.quote(AWS_ACCESS_KEY_ID),
+    urllib.parse.quote(AWS_SECRET_ACCESS_KEY)
 )
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
+
+#BROKER_URL = 'redis://h:pfca188885a4ab8d9de0f30936aa30ef50ba7f47a54fe8d8b6ff65952e22f01f9@ec2-34-230-250-188.compute-1.amazonaws.com:10349'
+#CELERY_ACCEPT_CONTENT = ['json']
+#CELERY_TASK_SERIALIZER = 'json'
 
 
 

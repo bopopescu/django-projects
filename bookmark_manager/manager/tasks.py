@@ -10,7 +10,7 @@ def sendmail():
     send_mail(
         subject='Thats your subject',
         message='That’s your message body',
-        from_email='testeradam@gmail.com',
+        from_email='',
         recipient_list=['likhith@supplycompass.com', ],
         fail_silently=False,
     )
